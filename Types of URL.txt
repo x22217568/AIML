@@ -1,0 +1,56 @@
+import sklearn
+import pandas as pd
+import numpy as np
+import pickle
+import tensorflow as tf
+from tensorflow import keras
+
+%matplotlib inline
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+mpl.rc('axes', labelsize=14)
+mpl.rc('xtick', labelsize=12)
+mpl.rc('ytick', labelsize=12)
+pd.set_option('display.max_columns', None) #display all the columns in pandas head function
+
+np.random.seed(42)
+tf.random.set_seed(42)
+
+from urllib.parse import urlparse,urlencode
+import ipaddress
+import re
+import requests
+import seaborn as sns
+import os
+for dirname, _, filenames in os.walk('/kaggle/input'):
+    for filename in filenames:
+        print(os.path.join(dirname, filename))
+
+pip install lightgbm
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.linear_model import SGDClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import AdaBoostClassifier
+import lightgbm as lgb
+from sklearn.linear_model import RidgeClassifier
+
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+from sklearn.metrics import classification_report
+
+from sklearn.model_selection import cross_val_predict
+from sklearn.model_selection import  cross_val_score, StratifiedKFold
+random_state = 42
+cv_results = np.array([])
+cv_means = []
+cv_std = []
+cvk=10
+
+df =pd.read_csv('malicious_phish.csv')
+df.head(10)
+df.shape
+df["type"].describe()
+df["type"].value_counts()
+lis=[df["type"].value_counts()[0],df["type"].value_counts()[1],df["type"].value_counts()[2],df["type"].value_counts()[3]]
+plt.pie(lis,labels=["Benign","Defacement","Phishing","Malware"])
